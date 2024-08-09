@@ -1,0 +1,34 @@
+version: '3'
+services: 
+  enodeb:
+    image: gradiant/srsran-4g:23_11
+    command: 
+      - enb
+    privileged: true
+    cap_add:
+      - all
+    environment:
+      MME_HOSTNAME: mme
+      ENB_HOSTNAME: enodeb
+      UE_HOSTNAME: ue
+      MCC: "999"
+      MNC: "70"
+      ZMQ: true
+
+  ue:
+    image: gradiant/srsran-4g:23_11
+    command: 
+      - ue
+    privileged: true
+    cap_add:
+      - all
+    environment:
+      ENB_HOSTNAME: enodeb
+      UE_HOSTNAME: ue
+      MCC: "999"
+      MNC: "70"
+      MSISDN: "0000000001"
+      KEY: "465B5CE8B199B49FAA5F0A2EE238A6BC"
+      OPC: "E8ED289DEBA952E4283B54E88E6183CA"
+      SRSUE_5G: false
+      ZMQ: true

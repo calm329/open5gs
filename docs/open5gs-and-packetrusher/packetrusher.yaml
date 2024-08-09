@@ -1,0 +1,16 @@
+version: '3'  
+
+services:  
+  packetrusher:  
+    image: gradiant/packetrusher:32a08fa  
+    container_name: packetrusher  
+    cap_add:  
+      - all
+      - NET_ADMIN  
+      - SYS_MODULE  
+      - SYS_ADMIN  
+    privileged: true  
+    environment:  
+      GNBSD: ffffff  
+      UESD: ffffff  
+    command: ["ue"]
